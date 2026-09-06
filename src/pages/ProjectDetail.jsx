@@ -32,8 +32,18 @@ export default function ProjectDetail() {
       className="min-h-screen bg-[#0f172a]"
     >
       {/* Hero Section */}
-      <div className="relative h-64 md:h-80 bg-gradient-to-br from-[#1e293b] to-[#0f172a]">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/50 to-transparent" />
+      <div className="relative h-64 md:h-80 bg-gradient-to-br from-[#1e293b] to-[#0f172a] overflow-hidden">
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.name}
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/70 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#6366f1]/20 via-transparent to-transparent" />
         
         {/* Back Button */}

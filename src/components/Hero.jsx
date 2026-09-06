@@ -156,9 +156,19 @@ export default function Hero() {
               
               {/* Avatar Circle */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-2 border-[#334155] overflow-hidden">
-                  {/* Placeholder Avatar */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#334155] to-[#1e293b]">
+                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-2 border-[#334155] overflow-hidden group">
+                  {personalInfo.avatar && (
+                    <img
+                      src={personalInfo.avatar}
+                      alt={personalInfo.name}
+                      className="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  )}
+                  {/* Fallback Icon */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#334155] to-[#1e293b]">
                     <Code2Icon size={80} className="text-[#6366f1]/50" />
                   </div>
                 </div>

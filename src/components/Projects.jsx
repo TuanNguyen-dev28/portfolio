@@ -85,7 +85,18 @@ export default function Projects() {
                 {/* Top Info Banner */}
                 <div>
                   <div className="relative h-44 bg-gradient-to-br from-[#1e293b] via-[#334155]/60 to-[#0f172a] overflow-hidden p-6 flex flex-col justify-between">
-                    <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
+                    {/* Background Project Image if present */}
+                    {project.image && (
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-500"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    )}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
                       <FolderIcon size={96} className="text-[#6366f1] group-hover:scale-110 transition-transform duration-500" />
                     </div>
 
