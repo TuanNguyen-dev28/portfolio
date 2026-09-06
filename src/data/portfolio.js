@@ -139,7 +139,7 @@ export const educationContent = {
     {
       school: "UTH - University of Transport Ho Chi Minh City",
       degree: "Bachelor of Computer Science",
-      duration: "2020 - Present",
+      duration: "2022 - Present",
       gpa: "3.0/4.0",
       relevantCourses: [
         "Machine Learning",
