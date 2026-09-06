@@ -54,6 +54,22 @@ export default function ProjectDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              {project.category && (
+                <span className="px-3 py-1 bg-[#6366f1]/20 text-[#818cf8] text-xs font-semibold rounded-full border border-[#6366f1]/30">
+                  {project.category}
+                </span>
+              )}
+              {project.projectType && (
+                <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${
+                  project.projectType === 'Team Project'
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                    : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                }`}>
+                  {project.projectType}
+                </span>
+              )}
+            </div>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">{project.name}</h1>
             <p className="text-gray-400 text-lg md:text-xl max-w-3xl">{project.shortDesc}</p>
           </motion.div>
@@ -223,13 +239,39 @@ export default function ProjectDetail() {
             >
               <h3 className="text-lg font-semibold text-white mb-4">Project Info</h3>
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Type</span>
-                  <span className="text-gray-300">Full-stack Application</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-500">Domain</span>
+                  <span className="text-gray-300 font-medium">{project.category || "Software Engineering"}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-500">Classification</span>
+                  <span className="text-gray-300 font-medium">{project.projectType || "Project"}</span>
+                </div>
+                {project.collaborators && project.collaborators.length > 0 && (
+                  <div className="pt-2 border-t border-[#334155]/60">
+                    <span className="text-gray-500 block mb-2">Collaborators:</span>
+                    <div className="space-y-1.5">
+                      {project.collaborators.map((c, i) => (
+                        <a
+                          key={i}
+                          href={c.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between text-xs p-2 rounded bg-[#334155]/40 text-amber-300 hover:bg-[#334155] transition-colors"
+                        >
+                          <span className="font-semibold">@{c.name}</span>
+                          <span className="text-gray-400">{c.role}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="flex justify-between items-center pt-2 border-t border-[#334155]/60">
                   <span className="text-gray-500">Status</span>
-                  <span className="text-green-400">Completed</span>
+                  <span className="text-emerald-400 font-medium flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Completed & Open Source
+                  </span>
                 </div>
               </div>
             </motion.div>

@@ -3,8 +3,6 @@ import { Mail, Heart, Code2 } from 'lucide-react';
 import { footerContent, personalInfo } from '../data/portfolio';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  
   const githubUrl = personalInfo.github !== "[YOUR GITHUB USERNAME]"
     ? `https://github.com/${personalInfo.github}`
     : "#";
