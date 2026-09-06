@@ -84,21 +84,25 @@ export default function Projects() {
               >
                 {/* Top Info Banner */}
                 <div>
-                  <div className="relative h-44 bg-gradient-to-br from-[#1e293b] via-[#334155]/60 to-[#0f172a] overflow-hidden p-6 flex flex-col justify-between">
-                    {/* Background Project Image if present */}
-                    {project.image && (
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-500"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
+                  <div className="relative h-48 bg-gradient-to-br from-[#1e293b] via-[#334155]/40 to-[#0f172a] overflow-hidden p-6 flex flex-col justify-between">
+                    {/* Background Project Image */}
+                    {project.image ? (
+                      <div className="absolute inset-0 bg-[#111827]/85 flex items-center justify-center p-3">
+                        <img
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-contain object-center rounded-lg opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/50 to-transparent pointer-events-none" />
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+                        <FolderIcon size={96} className="text-[#6366f1] group-hover:scale-110 transition-transform duration-500" />
+                      </div>
                     )}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
-                      <FolderIcon size={96} className="text-[#6366f1] group-hover:scale-110 transition-transform duration-500" />
-                    </div>
 
                     <div className="flex items-center justify-between relative z-10 gap-2">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#0f172a]/80 backdrop-blur-md border border-[#334155] text-gray-300">

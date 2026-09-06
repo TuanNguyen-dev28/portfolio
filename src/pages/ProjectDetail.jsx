@@ -120,6 +120,25 @@ export default function ProjectDetail() {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
+            {/* Project Showcase Image */}
+            {project.image && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="glass-card p-6 overflow-hidden flex items-center justify-center bg-[#111827]/70 rounded-2xl border border-[#334155] shadow-xl"
+              >
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="max-h-80 w-auto object-contain rounded-xl"
+                  onError={(e) => {
+                    e.currentTarget.parentElement.style.display = 'none';
+                  }}
+                />
+              </motion.div>
+            )}
+
             {/* Project Overview */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
